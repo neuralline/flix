@@ -1,0 +1,7 @@
+node_modules/brfs/test/files/buffer.js
+
+/node_modules
+/.cache
+/dist
+/.vscode
+*.lock

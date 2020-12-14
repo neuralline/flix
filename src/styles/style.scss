@@ -1,0 +1,218 @@
+$background: rgba(0, 0, 0, 1);
+$container: #7980e3;
+$question-bg: rgba(27, 30, 30, 0.7);
+$question-text: #ffffff;
+$li-background: rgba(255, 255, 255, 0.84);
+$text-light: rgba(49, 50, 58, 1);
+$text-color: #000000;
+
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@600&display=swap');
+html body {
+  font-family: 'Cabin', sans-serif;
+  font-weight: 500;
+  background-color: $background;
+  margin: 0;
+  font-size: 12px;
+  text-align: left;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: moz-none;
+  -ms-user-select: none;
+  user-select: none;
+  overflow: -moz-scrollbars-none;
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  list-style: none;
+  margin: 0;
+}
+
+main {
+  display: block;
+  position: relative;
+  width: 896px;
+  height: 504px;
+  margin: 0 auto;
+  background: $container;
+  video {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+  }
+}
+
+.transition {
+  transition: all 0.6s ease;
+  transition: all 600ms cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.interface-container.open {
+  left: 64px;
+  opacity: 100;
+}
+
+.interface-container {
+  position: absolute;
+  left: -264px;
+  opacity: 0;
+  bottom: 40px;
+
+  .interface {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: end;
+    width: 260px;
+    #photo {
+      background: url('../img/btn-close.svg');
+      background-size: 100%;
+      height: 26px;
+      width: 26px;
+      border-radius: 50%;
+      margin: 3.88px 6px 2.88px 4px;
+    }
+
+    #topSection {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      position: relative;
+    }
+    #author {
+      padding: 4px;
+      padding-left: 0;
+    }
+
+    .author {
+      background-image: url('../img/Sender\ Box.svg');
+      background-size: 100% auto;
+      background-repeat: no-repeat;
+      background-position: cover;
+      height: 39px;
+      min-width: 147px;
+      padding: 10px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-left: -8px;
+      position: relative;
+    }
+    #containerCloseBtn {
+      background: url('../img/btn-close.svg');
+      background-size: 100%;
+      height: 26px;
+      width: 26px;
+      border-radius: 50%;
+      position: absolute;
+      right: 4px;
+      top: 4px;
+      cursor: pointer;
+    }
+
+    .question {
+      background-color: $question-bg;
+      font-size: 17px;
+      color: rgba(255, 255, 255, 1);
+      text-align: left;
+      margin-bottom: 6px;
+      padding: 12px;
+      padding-right: 40px;
+      border-radius: 12px;
+      position: relative;
+      min-height: 40px;
+    }
+  }
+
+  ul li {
+    display: flex;
+    border-radius: 65px;
+    height: 32.22px;
+    background-color: $li-background;
+    margin-bottom: 6px;
+    font-size: 12px;
+    min-width: 231px;
+    justify-content: start;
+    align-items: center;
+    cursor: pointer;
+    .ico {
+      height: 27px;
+      width: 27px;
+      border-radius: 50%;
+      background-color: $container;
+      margin-left: 3px;
+    }
+    div {
+      margin-left: 6px;
+    }
+    &.active {
+      background-color: #7980e3;
+    }
+  }
+  //count down css
+
+  #countdown-number {
+    color: white;
+    display: inline-block;
+    line-height: 40px;
+  }
+  .questionCounter {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    margin: auto 0;
+    right: 3px;
+    top: 3px;
+    border-radius: 50%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  svg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    transform: rotateZ(-90deg);
+  }
+
+  svg circle {
+    width: 100%;
+    height: 100%;
+    display: block;
+    stroke-linecap: round;
+    stroke-width: 2px;
+    stroke: #ffffff3a;
+    fill: none;
+  }
+  svg circle:nth-child(2) {
+    stroke-dasharray: 113px;
+    stroke-dashoffset: 0px;
+    stroke: #f45652;
+    animation: countdown 20s linear forwards;
+  }
+
+  @keyframes countdown {
+    from {
+      stroke-dashoffset: 113px;
+    }
+    to {
+      stroke-dashoffset: 0px;
+    }
+  }
+}
