@@ -7,6 +7,8 @@ const Flix = (divId: string, url: string) => {
   const main: HTMLElement = document.getElementById(divId)
   const defaultInterval: number = 1
 
+  console.log('loading flix-mocies')
+
   //fetch data
   const getData = async url => {
     try {

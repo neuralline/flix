@@ -1,21 +1,21 @@
 export interface Template {
-  id: string
+  id: number
   question: string
   duration: number
   author: Author
-  answers: [Answer]
+  answers: Answer[]
 }
 
 export interface Answer {
   title: string
-  id: string
-  image: [{}]
+  id: number
+  image: string[]
 }
 
 export interface Author {
   first_name: string
   last_name: string
-  photo: [{}]
+  photo: string[]
 }
 
 declare function Flex(id: string, url: string)

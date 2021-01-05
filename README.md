@@ -4,8 +4,8 @@
 
   Neural Line
   FLIX
-  Interactive video
-  TypeScript app
+  Interactive video/movie
+  With TypeScript, Parcel, Cypress and SCSS
 
 ```
 
@@ -26,6 +26,12 @@ In this project
 
 ```sh
 TypeScript, JavaScript, async/await, recursive functions, dom manipulation, svg and css animation, pixel perfect ui design, css sass and also unit testing
+```
+
+And also in this project
+
+```sh
+Added Cypress end to end testing
 ```
 
 > Its written in functional javascript to avoid mutation however there is a lot of dom interaction going on in this app so it was hard to keep all component pure. I admit this would have been great with OOP class based mutation but FLIX managed with recursive function and Promise chains.

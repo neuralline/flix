@@ -3,7 +3,7 @@ import { Answer, Template } from '../global'
 export const createCard = (data: Template): HTMLElement => {
   if (data === undefined) return
   const card: HTMLElement = document.createElement('div')
-  card.id = data.id
+  card.id = '' + data.id
   card.className = 'interface-container transition'
   card.innerHTML = `
   <div class="interface">
@@ -33,7 +33,9 @@ export const createCard = (data: Template): HTMLElement => {
       <ul id="answers">
       ${data.answers
         .map(
-          (answer: Answer) => `<li id=${answer.id} class='transition shadow'>
+          (answer: Answer) => `<li id=${
+            '' + answer.id
+          } class='transition shadow'>
                       <img src='${answer.image[0]}' class="ico" alt='profile' />
                       <div>${answer.title}</div>
                     </li>`
