@@ -28,7 +28,6 @@ const Flix = (divId: string, url: string) => {
     interval: number = 15,
     currentQuestion: number = 0
   ): Promise<void> => {
-    console.log('next question has been called')
     const currentUrl = `${url}/${currentQuestion++}`
     try {
       await timer(interval)

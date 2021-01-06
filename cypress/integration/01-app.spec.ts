@@ -36,13 +36,7 @@ context('Home page', () => {
         .should('have.length', 1)
       //video interface should have 3 child elements
       //['top-section','question', 'answer']
-      /*  cy.getById('video-interface')
-        .children()
-        .should('have.length', 3)
-        .and($li => {
-          // 2 more assertions
-          $li.get(0).should('have.css', 'text-decoration', 'line-through')
-        }) */
+      cy.getById('video-interface').children().should('exist')
     })
   })
 })
