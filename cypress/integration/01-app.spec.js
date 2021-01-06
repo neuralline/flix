@@ -9,20 +9,40 @@ context('Home page', () => {
   describe('Flix home page', () => {
     it('contains "Flix Movies" in the title', () => {
       cy.title().should('contain', 'Flix Movies')
-
-      cy.get('video#flix-movie').should('exist')
     })
   })
 
   describe('Flix video player', () => {
-    it('video player should work', () => {
+    it('video should exist', () => {
       cy.get('video#flix-movie').should('exist')
+    })
+    it('video should play', () => {
       cy.get('video#flix-movie').then(video => {
         const element = video.get(0)
         element.muted = true
         element.play()
         return video
       })
+    })
+  })
+
+  describe('flix-interactive-container', () => {
+    it('interactive container and interface should exist', () => {
+      //test interactive container exist
+      cy.getById('flix-interactive-container').should('exist')
+      //container should have one video interface
+      cy.getById('flix-interactive-container')
+        .children()
+        .should('have.length', 1)
+      //video interface should have 3 child elements
+      //['top-section','question', 'answer']
+      /*  cy.getById('video-interface')
+        .children()
+        .should('have.length', 3)
+        .and($li => {
+          // 2 more assertions
+          $li.get(0).should('have.css', 'text-decoration', 'line-through')
+        }) */
     })
   })
 })

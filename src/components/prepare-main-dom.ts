@@ -1,12 +1,12 @@
 import { Template } from '../global'
-import { createCard } from './template'
+import { createInteractiveCard } from './template'
 
 //prepare new dom element
 export const prepareUserInterface = (
   data: Template,
   mainDom: HTMLElement
 ): HTMLElement => {
-  const videoInterface: HTMLElement = createCard(data)
+  const videoInterface: HTMLElement = createInteractiveCard(data)
   try {
     mainDom?.appendChild(videoInterface)
     return videoInterface

@@ -1,12 +1,13 @@
 import { Answer, Template } from '../global'
 
-export const createCard = (data: Template): HTMLElement => {
+export const createInteractiveCard = (data: Template): HTMLElement => {
   if (data === undefined) return
   const card: HTMLElement = document.createElement('div')
   card.id = '' + data.id
   card.className = 'interface-container transition'
+  card.dataset.test = 'flix-interactive-container'
   card.innerHTML = `
-  <div class="interface">
+  <div class="interface" data-test="video-interface">
       <div id="topSection">
           <div class="author">
             <img src='${data.author.photo[0]}' id="photo">
@@ -16,7 +17,7 @@ export const createCard = (data: Template): HTMLElement => {
           </div>
           <i id="containerCloseBtn"></i>
       </div>
-      <div class="question">
+      <div class="question" id='question'>
           <div class="questionCounter">
            <svg
         class="complete"
@@ -33,9 +34,9 @@ export const createCard = (data: Template): HTMLElement => {
       <ul id="answers">
       ${data.answers
         .map(
-          (answer: Answer) => `<li id=${
-            '' + answer.id
-          } class='transition shadow'>
+          (answer: Answer) => `<li id=${'' + answer.id}
+          data-test='answer'
+          class='transition shadow'>
                       <img src='${answer.image[0]}' class="ico" alt='profile' />
                       <div>${answer.title}</div>
                     </li>`

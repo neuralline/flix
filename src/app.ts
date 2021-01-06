@@ -4,10 +4,11 @@ import { timer } from './components/timer'
 import { userInterface } from './components/user-interface'
 
 const Flix = (divId: string, url: string) => {
-  const main: HTMLElement = document.getElementById(divId)
+  const mainVideoContainer: HTMLElement = document.getElementById(divId)
+  const videoElement: HTMLElement = document.getElementById('flix-movie')
   const defaultInterval: number = 1
 
-  console.log('loading flix-mocies')
+  console.log('loading flix-movies')
 
   //fetch data
   const getData = async url => {
@@ -27,12 +28,16 @@ const Flix = (divId: string, url: string) => {
     interval: number = 15,
     currentQuestion: number = 0
   ): Promise<void> => {
+    console.log('next question has been called')
     const currentUrl = `${url}/${currentQuestion++}`
     try {
       await timer(interval)
       const data = await getData(currentUrl)
       if (data === undefined) return
-      const newElement: HTMLElement = prepareUserInterface(data, main)
+      const newElement: HTMLElement = prepareUserInterface(
+        data,
+        mainVideoContainer
+      )
       const userInterfaceResult = await userInterface(data.duration, newElement)
       await closeUserInterface(...userInterfaceResult)
       return nextQuestion(interval, currentQuestion)
@@ -43,7 +48,8 @@ const Flix = (divId: string, url: string) => {
   }
 
   //initialize FLIX
-  if (main) {
+  if (mainVideoContainer) {
+    videoElement.addEventListener('ready', () => console.log('video ready'))
     nextQuestion(defaultInterval, 1)
     return true
   } else {
