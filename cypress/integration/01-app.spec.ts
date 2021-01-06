@@ -18,6 +18,7 @@ context('Home page', () => {
     })
     it('video should play', () => {
       cy.get('video#flix-movie').then(video => {
+        console.log('video', video)
         const element = video.get(0)
         element.muted = true
         element.play()
@@ -30,6 +31,7 @@ context('Home page', () => {
     it('interactive container and interface should exist', () => {
       //test interactive container exist
       cy.getById('flix-interactive-container').should('exist')
+      cy.getById('flix-interactive-container').should('be.visible')
       //container should have one video interface
       cy.getById('flix-interactive-container')
         .children()

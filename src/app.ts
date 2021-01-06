@@ -29,6 +29,7 @@ const Flix = (divId: string, url: string) => {
     currentQuestion: number = 0
   ): Promise<void> => {
     const currentUrl = `${url}/${currentQuestion++}`
+    console.log('currentUrl', currentUrl)
     try {
       await timer(interval)
       const data = await getData(currentUrl)
