@@ -18,7 +18,6 @@ context('Home page', () => {
     })
     it('video should play', () => {
       cy.get('video#flix-movie').then(video => {
-        console.log('video', video)
         const element = video.get(0)
         element.muted = true
         element.play()

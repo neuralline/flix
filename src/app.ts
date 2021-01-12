@@ -28,8 +28,8 @@ const Flix = (divId: string, url: string) => {
     interval: number = 15,
     currentQuestion: number = 0
   ): Promise<void> => {
+    //create new url string for current get api
     const currentUrl = `${url}/${currentQuestion++}`
-    console.log('currentUrl', currentUrl)
     try {
       await timer(interval)
       const data = await getData(currentUrl)
@@ -49,7 +49,7 @@ const Flix = (divId: string, url: string) => {
 
   //initialize FLIX
   if (mainVideoContainer) {
-    videoElement.addEventListener('ready', () => console.log('video ready'))
+    videoElement.muted = true
     nextQuestion(defaultInterval, 1)
     return true
   } else {
